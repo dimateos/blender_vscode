@@ -13,6 +13,7 @@
   ],
   "activationEvents": [
     "onCommand:blender.start",
+    "onCommand:blender.startDefault",
     "onCommand:blender.stop",
     "onCommand:blender.build",
     "onCommand:blender.buildAndStart",
@@ -39,6 +40,11 @@
       {
         "command": "blender.start",
         "title": "Start",
+        "category": "Blender"
+      },
+      {
+        "command": "blender.startDefault",
+        "title": "Start Default",
         "category": "Blender"
       },
       {
@@ -129,6 +135,11 @@
                 }
               }
             }
+          },
+          "blender.defaultExecutableIndex": {
+            "type": "integer",
+            "default": 0,
+            "description": "Index of executable from \"blender.executables\" to use for \"Blender: Start Default\" command. Note: First entry starts at index 0."
           },
           "blender.allowModifyExternalPython": {
             "type": "boolean",

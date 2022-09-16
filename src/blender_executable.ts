@@ -28,6 +28,17 @@ export class BlenderExecutable {
         return new BlenderExecutable(data);
     }
 
+    public static async Get(index: number) {
+        let config = getConfig();
+        let allBlenderPaths = <BlenderPathData[]>config.get('executables');
+        if (index >= allBlenderPaths.length || index < 0) {
+            return Promise.reject(new RangeError(
+                `There is no Default Blender to launch at index ${index}. Add new executable or 
+                change the 'defaultExecutableIndex' settings.` ))
+        }
+        return new BlenderExecutable(allBlenderPaths[index])
+    }
+
     public static async GetDebug() {
         let data = await getFilteredBlenderPath({
             label: 'Debug Build',
@@ -40,6 +51,11 @@ export class BlenderExecutable {
 
     public static async LaunchAny() {
         await (await this.GetAny()).launch();
+    }
+
+    public static async LaunchDefault() {
+        let defaultIndex = getConfig().get('defaultExecutableIndex', 0);
+        await (await this.Get(defaultIndex)).launch();
     }
 
     public static async LaunchDebug(folder: BlenderWorkspaceFolder) {
