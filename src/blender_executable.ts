@@ -18,6 +18,7 @@ export class BlenderExecutable {
         this.data = data;
     }
 
+    // would like an option to just open the first
     public static async GetAny() {
         let data = await getFilteredBlenderPath({
             label: 'Blender Executable',
@@ -111,6 +112,9 @@ async function getFilteredBlenderPath(type: BlenderType): Promise<BlenderPathDat
             label: useCustomName ? pathData.name : pathData.path
         });
     }
+
+    // hack to just pick the first one for now
+    if (items.length > 0) return items[0].data();
 
     items.push({ label: type.selectNewLabel, data: async () => askUser_FilteredBlenderPath(type) });
 
