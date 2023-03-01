@@ -33,7 +33,7 @@ export const printChannelOutput = (content: string, reveal = false): void => {
 
 export function activate(context: vscode.ExtensionContext) {
     outputChannel = vscode.window.createOutputChannel("Blender debugpy");
-    printChannelOutput("Activated...", true);
+    printChannelOutput("activated...", true);
 
     let commands: [string, () => Promise<void>][] = [
         ['blender.start', COMMAND_start],
