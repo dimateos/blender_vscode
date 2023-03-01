@@ -132,7 +132,7 @@
           },
           "blender.allowModifyExternalPython": {
             "type": "boolean",
-            "scope": "application",
+            "scope": "resource",
             "default": false,
             "description": "Allow automatically installing modules in Python distributions outside of Blender."
           },
@@ -187,7 +187,7 @@
           },
           "blender.scripts.directories": {
             "type": "array",
-            "scope": "application",
+            "scope": "resource",
             "description": "Directories to store scripts in.",
             "items": {
               "type": "object",
@@ -195,11 +195,11 @@
               "properties": {
                 "path": {
                   "type": "string",
-                  "description": "Absolute file path to a Blender executable."
+                  "description": "Absolute file path to a script folder (or empty folder to be used for a script)."
                 },
                 "name": {
                   "type": "string",
-                  "description": "Custom name for this Blender version."
+                  "description": "Custom name for this script folder."
                 }
               }
             }
